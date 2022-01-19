@@ -1,0 +1,182 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Gugi&family=Lato:ital@1&family=Roboto:ital@1&family=Sofia&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap");
+:root {
+    --light-gray: #343a40;
+    --border: #2b303218;
+    --text-color: #ff686b;
+    --roboto: "Roboto", sans-serif;
+    --gugi: "Gugi", cursive;
+    --sofia: "sofia", cursive;
+    --sans: "Source Sans Pro", sans-serif;
+}
+
+.primary-color {
+    color: var(--primary-color);
+}
+
+.bg-primary-color {
+    background-color: var(--primary-color) !important;
+}
+
+.text-color {
+    color: var(--text-color);
+}
+
+.font-roboto {
+    font-family: var(--roboto);
+}
+
+.lightblue {
+    color: lightblue;
+}
+
+body,
+html {
+    height: 100%;
+    overflow-x: hidden;
+    max-width: 100%;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/*header*/
+
+header {
+    background-color: var(--light-gray);
+    font-family: var(--sans);
+}
+
+header .site-title {
+    font-family: var(--sans);
+    font-weight: bolder;
+}
+
+.container .dropdowm-toggle,
+.container .dropdowm-item {
+    font-size: 0.5em;
+}
+
+.header-links a {
+    font-size: 0.9em;
+    text-decoration: none;
+    color: white;
+}
+
+
+/* Navigation menew */
+
+.navbar-nav {
+    padding: 0.5em 0em;
+}
+
+.navbar-nav .nav-link {
+    /* font-size: 0.9em; */
+    color: var(--light-gray) !important;
+    font-family: var(--sans);
+}
+
+.navbar-nav .nav-item .nav-link {
+    padding: 0 1em;
+}
+
+.map-container {
+    overflow: hidden;
+    padding-bottom: 10%;
+    padding-top: 5%;
+    position: relative;
+    height: 0;
+}
+
+.map-container iframe {
+    margin-top: 5vw;
+    left: 0;
+    top: 0;
+    height: 70%;
+    width: 100%;
+    position: absolute;
+}
+
+.containers {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+/* image section */
+
+.hero-image1 {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("/static/images/1.jpeg");
+    height: 100% !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.hero-text1 {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+.view {
+    background-color: #82ae46;
+    border-radius: 25px;
+    color: white;
+}
+
+.view:hover {
+    opacity: 50%;
+}
+
+.testimony .colum1 {
+    cursor: pointer;
+    transition: transform 0.5s;
+    text-align: center;
+}
+
+.testimony .colum1:hover {
+    transform: translateY(-10px);
+}
+
+.testimony img {
+    border-radius: 50%;
+    width: 50%;
+    margin: auto;
+}
+
+.ftco-section1 {
+    padding: 6em 0;
+    position: relative;
+}
+
+.hero-image2 {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("https://images.pexels.com/photos/4117544/pexels-photo-4117544.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");
+    height: 100% !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.hero-text2 {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
