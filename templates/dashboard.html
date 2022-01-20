@@ -1,0 +1,167 @@
+{% extends 'base.html' %} {% block title %} Crop {% endblock title %} {% block body %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+        .hero-image {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("/static/images/4.jpeg");
+            height: 50%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+        
+        .backgr-image {
+            background-image: linear-gradient(rgba(0, 0, 0.1, 0.1), rgba(0, 0, 0.1, 0.1)), url("/static/images/1.jpeg");
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            color: white;
+        }
+        
+        .hero-text {
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+        }
+        
+        .text-colors {
+            color: #7dcaf3;
+        }
+        
+        .btn-info {
+            background-color: #7dcaf3;
+            border-color: #fff;
+        }
+        
+        #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 100px;
+            z-index: 999;
+            font-size: 10px;
+            border: none;
+            outline: none;
+            background-color: #7dcaf3;
+            color: white;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 50%;
+        }
+        
+        .aboutimg {
+            width: 100%;
+            height: 500px !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--About us section-->
+    <div class="hero-image ">
+        <div class="hero-text">
+            <p class="breadcrumbs text-white font-weight-bold"><span class="mr-2"><a href="{{ url_for('hello_world') }}"
+                        class="text-white">Home /</a></span>
+                <span>Dashboard</span>
+            </p>
+            <h1 class="mb-0 bread font-weight-bold">Find out the most suitable crop to grow in your farm</h1>
+        </div>
+    </div>
+    <!--/About us section-->
+
+    <!-- <a href="{{ url_for('logout') }}">
+        <input type="submit" class="btn btn-dark btn-md float-end m-4" value="logout">
+    </a> -->
+
+    <!-- second nav -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav mx-auto">
+                <a class="nav-item nav-link" href="{{ url_for('dashboard') }}">Dashboard <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="{{ url_for('crop_recommend') }}">Crop</a>
+                <a class="nav-item nav-link" href="{{ url_for('fertilizer_recommendation') }}">Fertilizer</a>
+                <a class="nav-item nav-link" href="{{ url_for('disease_prediction') }}">Disease</a>
+                <a class="nav-item nav-link" href="{{ url_for('logout') }}">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <!--service part-->
+    <section>
+        <div class="container ">
+            <h1 class="text-center text-capitalize pt-5 ">Our services</h1>
+            <hr class="w-25 mx-auto " />
+
+            <div class="row text-center mb-5 p-3 ">
+                <div class="col-lg-4 col-md-4 col-12 ">
+                    <div class="card bg-dark text-white ">
+                        <img class="card-img-top " src="{{url_for( 'static', filename='images/a.jpg' )}} " alt="Card image " />
+                        <div class="card-body ">
+                            <h4 class="card-title ">Crop</h4>
+                            <p class="card-text ">Recommendation about the type of crops to be cultivated which is best suited for the respective conditions.</p>
+                            <p><a href="{{ url_for( 'crop_recommend') }} " class="btn view rounded-pill ">View Details</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-12 ">
+                    <div class="card bg-dark text-white ">
+                        <img class="card-img-top " src="{{ url_for( 'static', filename='images/c.jpg' ) }} " alt="Card image " />
+                        <div class="card-body ">
+                            <h4 class="card-title ">Fertilizer</h4>
+                            <p class="card-text ">Recommendation about the type of fertilizer best suited for the particular soil and the recommended crop</p>
+                            <p><a href="{{ url_for( 'fertilizer_recommendation') }} " class="btn view rounded-pill ">View Details</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-12 ">
+                    <div class="card bg-dark text-white ">
+                        <img class="card-img-top " src="{{ url_for( 'static', filename='images/b.jpg' ) }} " alt="Card image " />
+                        <div class="card-body ">
+                            <h4 class="card-title ">Crop Disease</h4>
+                            <p class="card-text ">Predicting the name and causes of crop disease and suggestions to cure it
+                            </p>
+                            <p><a href="{{ url_for( 'disease_prediction') }} " class="btn view rounded-pill ">View Details</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--services end-->
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js " integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN " crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js " integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q " crossorigin="anonymous "></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js " integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl " crossorigin="anonymous "></script>
+</body>
+
+</html>
+{% endblock body %}
