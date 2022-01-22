@@ -1,13 +1,16 @@
+from cgitb import text
 from enum import unique
 from tkinter.tix import Form
+from unicodedata import name
 import bcrypt
-from flask import Flask, redirect, render_template, url_for
+from flask import Flask, redirect, render_template, url_for, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired, Length, ValidationError
 from flask_wtf import FlaskForm
 from flask_bcrypt import Bcrypt
+from datetime import datetime
 
 
 app = Flask(__name__)
@@ -47,7 +50,17 @@ class LoginForm(FlaskForm):
     username=StringField(validators=[InputRequired(),Length(min=5,max=20)],render_kw={"placeholder":"username"})
     password=PasswordField(validators=[InputRequired(),Length(min=5,max=20)],render_kw={"placeholder":"password"})
     submit = SubmitField("Login")
-    
+
+
+class ContactUs(db.Model):
+    sno = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(200), nullable=False)
+    email = db.Column(db.String(500), nullable=False)
+    text = db.Column(db.String(900), nullable=False)
+    date_created = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def __repr__(self) -> str:
+        return f"{self.sno} - {self.title}"
 
 @app.route("/")
 def hello_world():
@@ -58,8 +71,16 @@ def hello_world():
 def aboutus():
     return render_template("aboutus.html")
 
-@app.route("/contact")
+@app.route("/contact", methods=['GET', 'POST'])
 def contact():
+    if request.method=='POST':
+        name = request.form['name']
+        email = request.form['email']
+        text = request.form['text']
+        contacts = ContactUs(name=name, email=email, text=text)
+        db.session.add(contacts)
+        db.session.commit()
+    
     return render_template("contact.html")
 
 @app.route("/login", methods=['GET', 'POST'])
@@ -68,7 +89,7 @@ def login():
     if current_user.is_authenticated:
          return redirect(url_for('dashboard'))
 
-    if form.validate_on_submit():
+    elif form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
         if user:
             if bcrypt.check_password_hash(user.password,form.password.data):
