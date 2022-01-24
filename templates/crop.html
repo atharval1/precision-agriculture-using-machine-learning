@@ -105,30 +105,30 @@
     </nav>
 
     <div class="container p-4 backgr-image">
-        <form class="text-uppercase font-weight-bold">
+        <form class="text-uppercase font-weight-bold" method="POST" action="{{ url_for('crop_prediction') }}">
             <div class="form-group">
                 <label for="exampleInputEmail1">Nitrogen</label>
-                <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter the value">
+                <input type="number" class="form-control" name="nitrogen" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter the value">
             </div>
 
             <div class="form-group">
                 <label for="exampleInputEmail1">Phosphorous</label>
-                <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter the value">
+                <input type="number" class="form-control" name="phosphorous" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter the value">
             </div>
 
             <div class="form-group">
                 <label for="exampleInputEmail1">Pottasium</label>
-                <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter the value">
+                <input type="number" class="form-control" name="pottasium" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter the value">
             </div>
 
             <div class="form-group">
                 <label for="exampleInputEmail1">ph</label>
-                <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter the value">
+                <input type="float" class="form-control" name="ph" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter the value">
             </div>
 
             <div class="form-group">
                 <label for="exampleInputEmail1">Rainfall</label>
-                <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter the value">
+                <input type="float" class="form-control" name="rainfall" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter the value">
             </div>
 
             <!-- chnages -->
