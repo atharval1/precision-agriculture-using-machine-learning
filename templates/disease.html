@@ -109,13 +109,26 @@
 
     <h2 class="text-center m-4">Please upload the image</h2>
 
-    <form>
+    <form class="form-signin" method=post enctype=multipart/form-data>
         <div class="mx-auto" style="width: 200px;">
-            <input type="file" class="form-control-file" id="exampleFormControlFile1">
-
+            <input type="file" name="file" id="inputfile" onchange="preview_image(event)" class="form-control-file">
+            <br>
+            <br>
+            <img id="output-image" class="rounded mx-auto d-block" />
             <button type="submit" class="btn btn-dark p-2 m-3 btn-lg">Predict</button>
         </div>
     </form>
+
+    <script type="text/javascript">
+        function preview_image(event) {
+            var reader = new FileReader();
+            reader.onload = function() {
+                var output = document.getElementById('output-image')
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
 
 
     <!-- footer section start-->

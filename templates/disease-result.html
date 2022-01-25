@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block body %}
+ {% extends 'base.html' %} {% block body %}
 
 <style>
     .mt-0 {
@@ -28,10 +28,10 @@
 <div class="hero-image ">
     <div class="hero-text">
         <p class="breadcrumbs text-white font-weight-bold"><span class="mr-2"><a href="{{ url_for('hello_world') }}"
-                  class="text-white">Home /</a></span>
+                class="text-white">Home /</a></span>
             <span>crop-result</span>
         </p>
-        <h1 class="mb-0 bread font-weight-bold">Find out the which fertilizer to use</h1>
+        <h1 class="mb-0 bread font-weight-bold">Find out the disease having the plant</h1>
     </div>
 </div>
 <!--/About us section-->
@@ -39,8 +39,8 @@
 <!-- second nav -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
-  </button>
+<span class="navbar-toggler-icon"></span>
+</button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav mx-auto">
             <a class="nav-item nav-link active" href="{{ url_for('dashboard') }}">Dashboard</a>
@@ -52,17 +52,17 @@
     </div>
 </nav>
 
-
-<!-- prediction -->
 <div class="container py-2 mx-auto my-50 h-10 " style="margin: 9rem;">
     <div class="row">
         <div class="col-sm py-2 py-md-3">
             <div class="card card-body" style="justify-content: center; background-color:white">
-                <p class="text-center m-1 p-2" style="color: green; font-size: 22px; font-weight: bold;">{{ recommendation }}</p>
+                <p class="text-center" style="color: green; font-size: 22px; font-weight: bold;">{{ prediction }}</p>
             </div>
         </div>
     </div>
 </div>
+
+
 
 <!-- footer section start-->
 
