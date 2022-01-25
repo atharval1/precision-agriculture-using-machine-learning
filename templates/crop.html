@@ -107,34 +107,28 @@
     <div class="container p-4 backgr-image">
         <form class="text-uppercase font-weight-bold" method="POST" action="{{ url_for('crop_prediction') }}">
             <div class="form-group">
-                <label for="Nitrogen" style="font-size: 17px"><b>Nitrogen</b></label>
-                <input type="number" class="form-control" id="Nitrogen" name="nitrogen" placeholder="Enter the value (example:50)" style="font-weight: bold" required />
+                <label for="exampleInputEmail1">Nitrogen</label>
+                <input type="number" class="form-control" name="nitrogen" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter the value">
             </div>
-            <div class="form-group">
-                <label for="Phosphorous" style="font-size: 17px"><b>Phosphorous</b></label
-                >
-                <input
-                    type="number"
-                    class="form-control"
-                    id="Phosphorous"
-                    name="phosphorous"
-                    placeholder="Enter the value (example:50)"
-                    style="font-weight: bold"
-                    required
-                />
-                </div>
 
-                <div class="form-group">
-                <label for="Pottasium" style="font-size: 17px"><b>Pottasium</b></label>
-                <input type="number" class="form-control" id="Pottasium" name="pottasium" placeholder="Enter the value (example:50)" style="font-weight: bold" required />
-            </div>
             <div class="form-group">
-                <label for="ph" style="font-size: 17px"><b>ph level</b></label>
-                <input type="number" step="0.01" class="form-control" id="ph" name="ph" placeholder="Enter the value" style="font-weight: bold" required />
+                <label for="exampleInputEmail1">Phosphorous</label>
+                <input type="number" class="form-control" name="phosphorous" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter the value">
             </div>
+
             <div class="form-group">
-                <label for="Rainfall" style="font-size: 17px"><b>Rainfall (in mm)</b></label>
-                <input type="number" step="0.01" class="form-control" id="Rainfall" name="rainfall" placeholder="Enter the value" style="font-weight: bold" required />
+                <label for="exampleInputEmail1">Pottasium</label>
+                <input type="number" class="form-control" name="pottasium" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter the value">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">ph</label>
+                <input type="float" class="form-control" name="ph" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter the value">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">Rainfall</label>
+                <input type="float" class="form-control" name="rainfall" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter the value">
             </div>
 
             <!-- chnages -->
@@ -151,7 +145,7 @@
             <!-- chnages -->
 
             <div class="col-md-12 text-center">
-                <button type="submit" class="btn btn-success bg-dark btn-lg">Predict</button>
+                <button type="submit" class="btn btn-success bg-transparent btn-lg">Predict</button>
             </div>
         </form>
     </div>
@@ -162,7 +156,7 @@
     <footer class="page-footer font-small blue pt-5">
         <!-- Copyright -->
         <div class="footer-copyright text-center py-3 bg-dark text-light p-2" style="background-image: url(https://images.pexels.com/photos/5980/food-sunset-love-field.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);background-size: cover; height: 100px; background-position: center; position:center;">
-            <h5> © 2022 Copyright: Precision Agriculture Using Machine Learning
+            <h5> © 2021 Copyright: Precision Agriculture Using Machine Learning
                 <div class="text-center text-white text-uppercase font-weight-bold">Go Green....</div>
             </h5>
         </div>
