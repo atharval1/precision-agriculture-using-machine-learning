@@ -244,25 +244,25 @@ def signup():
 @ app.route('/crop-recommend')
 @login_required
 def crop_recommend():
-    title = 'Harvestify - Crop Recommendation'
+    title = '- Crop Recommendation'
     return render_template('crop.html', title=title)
 
 @ app.route('/fertilizer')
 @login_required
 def fertilizer_recommendation():
-    title = 'Harvestify - Fertilizer Suggestion'
+    title = '- Fertilizer Suggestion'
     return render_template('fertilizer.html', title=title)
 
 # @app.route('/disease-predict', methods=['GET', 'POST'])
 # @login_required
 # def disease_prediction():
-#     title = 'Harvestify - Disease Detection'
+#     title = '- Disease Detection'
 #     return render_template('disease.html', title=title)
 
 @app.route('/disease-predict', methods=['GET', 'POST'])
 @login_required
 def disease_prediction():
-    title = 'Harvestify - Disease Detection'
+    title = '- Disease Detection'
 
     if request.method == 'POST':
         if 'file' not in request.files:
@@ -324,7 +324,7 @@ def crop_prediction():
 
 @ app.route('/fertilizer-predict', methods=['POST'])
 def fert_recommend():
-    title = 'Harvestify - Fertilizer Suggestion'
+    title = '- Fertilizer Suggestion'
 
     crop_name = str(request.form['cropname'])
     N = int(request.form['nitrogen'])
