@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block title %} Disease {% endblock title %} {% block body %}
+{% extends 'base.html' %} {% block title %} Display {% endblock title %} {% block body %}
 
 <!doctype html>
 <html lang="en">
@@ -71,11 +71,6 @@
             width: 100%;
             height: 500px !important;
         }
-        
-        #output-image {
-            width: 300px;
-            height: 400px;
-        }
     </style>
 </head>
 
@@ -86,54 +81,61 @@
         <div class="hero-text">
             <p class="breadcrumbs text-white font-weight-bold"><span class="mr-2"><a href="{{ url_for('hello_world') }}"
                         class="text-white">Home /</a></span>
-                <span>Disease</span>
+                <span>Admin</span>
             </p>
-            <h1 class="mb-0 bread font-weight-bold">Find out which disease has been caught by your plant</h1>
+            <h1 class="mb-0 bread font-weight-bold">Admin Dashboard.</h1>
         </div>
     </div>
     <!--/About us section-->
+    <div class="container text-center mt-3">
+        <a class="btn btn-success btn-md" href="{{ url_for('logout') }}">Logout</a>
+    </div>
 
-    <!-- second nav -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light container-fluid">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav mx-auto">
-                <a class="nav-item nav-link active" href="{{ url_for('dashboard') }}">Dashboard<span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="{{ url_for('crop_recommend') }}">Crop</a>
-                <a class="nav-item nav-link" href="{{ url_for('fertilizer_recommendation') }}">Fertilizer</a>
-                <a class="nav-item nav-link" href="{{ url_for('disease_prediction') }}">Disease</a>
-                <a class="nav-item nav-link" href="{{ url_for('logout') }}">Logout</a>
-            </div>
-        </div>
-    </nav>
+    <h3 class="text-center mt-4">Total Quries</h3>
+    <table class="table border mt-5 text-success" style="width: 50%; margin: auto;">
+        <thead>
+            <tr>
+                <th scope="col">sr.no</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contact_us in alltodo %}
+            <tr>
+                <th scope="row">{{contact_us.sno}}</th>
+                <td>{{contact_us.name}}</td>
+                <td>{{contact_us.text}}</td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+    <h3 class="text-center mt-4">Total Users</h3>
+    <table class="table border mt-3 text-success" style="width: 50%; margin: auto;">
+        <thead>
+            <tr>
+                <th scope="col">sr.no</th>
+                <th scope="col">Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in alluser %}
+            <tr>
+                <th scope="row">{{user.id}}</th>
+                <td>{{user.username}}</td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
 
 
-    <!-- form section  -->
 
-    <h2 class="text-center m-4">Please upload the image</h2>
 
-    <form class="form-signin" method=post enctype=multipart/form-data>
-        <div class="mx-auto" style="width: 200px;">
-            <input type="file" name="file" id="inputfile" onchange="preview_image(event)" class="form-control-file">
-            <br>
-            <br>
-            <img id="output-image" class="rounded mx-auto d-block" />
-            <button type="submit" class="btn btn-dark p-2 m-3 btn-lg">Predict</button>
-        </div>
-    </form>
 
-    <script type="text/javascript">
-        function preview_image(event) {
-            var reader = new FileReader();
-            reader.onload = function() {
-                var output = document.getElementById('output-image')
-                output.src = reader.result;
-            }
-            reader.readAsDataURL(event.target.files[0]);
-        }
-    </script>
+
 
 
     <!-- footer section start-->
@@ -150,8 +152,6 @@
     </footer>
 
     <!-- footer section end -->
-
-
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

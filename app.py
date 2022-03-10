@@ -1,3 +1,4 @@
+import string
 import bcrypt
 from flask import Flask, redirect, render_template, url_for, request, Markup
 from flask_sqlalchemy import SQLAlchemy
@@ -7,9 +8,6 @@ from wtforms.validators import InputRequired, Length, ValidationError
 from flask_wtf import FlaskForm
 from flask_bcrypt import Bcrypt
 from datetime import datetime
-
-# chnages started-----------------------------------------------------------------------------------------------------------------
-
 import requests
 import numpy as np
 import pandas as pd
@@ -125,9 +123,6 @@ def predict_image(img, model=disease_model):
     return prediction
 
 
-# chnages ended-------------------------------------------------------------------------------------------------------------
-
-
 
 app = Flask(__name__)
 db = SQLAlchemy(app)
@@ -148,6 +143,11 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 class User(db.Model,UserMixin):
+    id = db.Column(db.Integer,primary_key=True)
+    username = db.Column(db.String(20), nullable=False, unique=True)
+    password = db.Column(db.String(80), nullable=False)
+
+class UserAdmin(db.Model,UserMixin):
     id = db.Column(db.Integer,primary_key=True)
     username = db.Column(db.String(20), nullable=False, unique=True)
     password = db.Column(db.String(80), nullable=False)
@@ -177,6 +177,7 @@ class ContactUs(db.Model):
 
     def __repr__(self) -> str:
         return f"{self.sno} - {self.title}"
+
 
 @app.route("/")
 def hello_world():
@@ -218,7 +219,7 @@ def login():
 @login_required
 def dashboard():
     title = 'dashboard'
-    return render_template('dashboard.html', title=title)
+    return render_template('dashboard.html',title=title)
 
 @ app.route('/logout',methods=['GET', 'POST'])
 @login_required
@@ -244,7 +245,7 @@ def signup():
 @ app.route('/crop-recommend')
 @login_required
 def crop_recommend():
-    title = '- Crop Recommendation'
+    title = 'crop-recommend - Crop Recommendation'
     return render_template('crop.html', title=title)
 
 @ app.route('/fertilizer')
@@ -282,8 +283,6 @@ def disease_prediction():
     return render_template('disease.html', title=title)
 
 
-
-# chnaging started ------------------------------------------------------------------------------------------------------
 # ===============================================================================================
 
 # RENDER PREDICTION PAGES
@@ -293,7 +292,7 @@ def disease_prediction():
 
 @ app.route('/crop-predict', methods=['POST'])
 def crop_prediction():
-    title = ' - Crop Recommendation'
+    title = '- Crop Recommendation'
 
     if request.method == 'POST':
         N = int(request.form['nitrogen'])
@@ -364,7 +363,50 @@ def fert_recommend():
     return render_template('fertilizer-result.html', recommendation=response, title=title)
 
 
-# chnaging ended----------------------------------------------------------------------------------------------------------------------
+@app.route("/display")
+def querydisplay():
+    alltodo = ContactUs.query.all()
+    return render_template("display.html",alltodo=alltodo)
+
+@app.route("/AdminLogin", methods=['GET', 'POST'])
+def AdminLogin():
+
+    form = LoginForm()
+    if current_user.is_authenticated:
+         return redirect(url_for('admindashboard'))
+
+    elif form.validate_on_submit():
+        user = UserAdmin.query.filter_by(username=form.username.data).first()
+        if user:
+            if bcrypt.check_password_hash(user.password,form.password.data):
+                login_user(user)
+                return redirect(url_for('admindashboard'))
+
+    return render_template("adminlogin.html", form=form)
+
+
+    # return render_template("adminlogin.html")
+
+@app.route("/admindashboard")
+@login_required
+def admindashboard():
+    alltodo = ContactUs.query.all()
+    alluser = User.query.all()
+    return render_template("admindashboard.html",alltodo=alltodo, alluser=alluser)
+
+@app.route("/reg",methods=['GET', 'POST'])
+def reg():
+    form = RegisterForm()
+
+    if form.validate_on_submit():
+        hashed_password = bcrypt.generate_password_hash(form.password.data)
+        new_user = UserAdmin(username=form.username.data, password=hashed_password)
+        db.session.add(new_user)
+        db.session.commit()
+        return redirect(url_for('AdminLogin'))
+
+    return render_template("reg.html", form=form)
+
 
 if __name__ == "__main__":
     app.run(debug=True,port=8000)

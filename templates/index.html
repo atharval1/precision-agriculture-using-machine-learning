@@ -19,15 +19,22 @@
 <!--about us-->
 <section>
     <div class="container">
-        <h1 class="text-center text-capitalize pt-5">About us</h1>
+        <h1 class="text-center text-capitalize pt-5" style="font-family: 'Arima Madurai', cursive;">About us</h1>
         <hr class="w-25 mx-auto" />
 
         <div class="row mb-5">
             <div class="col-lg-6 col-md-6 col-12">
-                <img src="{{ url_for('static', filename='images/3.jpeg') }}" class="img-fluid w-100" />
+                <!-- <img src="{{ url_for('static', filename='images/3.jpeg') }}" class="img-fluid w-100" /> -->
+                <figure class="snip1256">
+                    <img src="{{ url_for('static', filename='images/3.jpeg') }}" alt="sample42" />
+                    <figcaption>
+                        <h3>Hope You Like It......</h3>
+                        <h4 class="mt-4 mb-4">Precision Agriculture Using Machine Learning</h4><a href="#" class="read-more">Read More</a>
+                    </figcaption>
+                </figure>
             </div>
 
-            <div class="col-lg-6">
+            <div class="col-lg-6" style="font-family: 'Arima Madurai', cursive;">
                 <h3 class="mt-4">
                     Improving Agriculture, Improving Lives, Cultivating Crops To Make Farmers Increase Profit.
                 </h3>
@@ -44,12 +51,12 @@
 <!--service part-->
 <section>
     <div class="container">
-        <h1 class="text-center text-capitalize pt-5">Our services</h1>
+        <h1 class="text-center text-capitalize pt-5" style="font-family: 'Arima Madurai', cursive;">Our services</h1>
         <hr class="w-25 mx-auto" />
 
         <div class="row text-center mb-5 p-3">
             <div class="col-lg-4 col-md-4 col-12">
-                <div class="card bg-dark text-white">
+                <div class="card bg-dark text-white card1" style="font-family: 'Arima Madurai', cursive;">
                     <img class="card-img-top" src="{{url_for('static', filename='images/a.jpg')}}" alt="Card image" />
                     <div class="card-body">
                         <h4 class="card-title">Crop</h4>
@@ -60,7 +67,7 @@
             </div>
 
             <div class="col-lg-4 col-md-4 col-12">
-                <div class="card bg-dark text-white">
+                <div class="card bg-dark text-white card1" style="font-family: 'Arima Madurai', cursive;">
                     <img class="card-img-top" src="{{ url_for('static', filename='images/c.jpg') }}" alt="Card image" />
                     <div class="card-body">
                         <h4 class="card-title">Fertilizer</h4>
@@ -71,7 +78,7 @@
             </div>
 
             <div class="col-lg-4 col-md-4 col-12">
-                <div class="card bg-dark text-white">
+                <div class="card bg-dark text-white card1" style="font-family: 'Arima Madurai', cursive;">
                     <img class="card-img-top" src="{{ url_for('static', filename='images/b.jpg') }}" alt="Card image" />
                     <div class="card-body">
                         <h4 class="card-title">Crop Disease</h4>
@@ -92,7 +99,7 @@
 
 <footer class="page-footer font-small blue">
     <!-- Copyright -->
-    <div class="footer-copyright text-center py-3 bg-dark text-light p-2" style="background-image: url(https://images.pexels.com/photos/5980/food-sunset-love-field.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);background-size: cover; height: 100px; background-position: center; position:center;">
+    <div class="footer-copyright text-center py-3 bg-dark text-light p-2" style="background-image: url(https://images.pexels.com/photos/5980/food-sunset-love-field.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);background-size: cover; height: 100px; background-position: center; position:center; font-family: 'Arima Madurai', cursive;">
         <h5> © 2021 Copyright: Precision Agriculture Using Machine Learning
             <div class="text-center text-white text-uppercase font-weight-bold">Go Green....</div>
         </h5>

@@ -59,3 +59,9 @@ function print_city(city_id, city_index) {
         option_str.options[option_str.length] = new Option(city_arr[i], city_arr[i]);
     }
 }
+
+$(".hover").mouseleave(
+    function() {
+        $(this).removeClass("hover");
+    }
+);
