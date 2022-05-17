@@ -11,33 +11,66 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <style>
+        .hero-image {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("/static/images/4.jpeg");
+            height: 50%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+        
+        .hero-text {
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+        }
+        
+        .text-colors {
+            color: #7dcaf3;
+        }
+    </style>
 </head>
 
 <body>
 
+    <!--About us section-->
+    <div class="hero-image ">
+        <div class="hero-text">
+            <p class="breadcrumbs text-white font-weight-bold"><span class="mr-2"><a href="{{ url_for('hello_world') }}"
+                        class="text-white">Home /</a></span>
+                <span>Login</span>
+            </p>
+            <h1 class="mb-0 bread font-weight-bold">Login.</h1>
+        </div>
+    </div>
+    <!--/About us section-->
+
     <div id="login">
         <h3 class="text-center text-white pt-5">Login form</h3>
-        <div class="container">
+        <div class="container shadow-lg p-3 mb-5 bg-white rounded border border-primary rounded" style="width: 50%; height:50%">
             <div id="login-row" class="row justify-content-center align-items-center">
                 <div id="login-column" class="col-md-6">
                     <div id="login-box" class="col-md-12 p-4">
 
                         <form id="login-form" class="form" action="" method="post">
-                            <h3 class="text-center text-dark">Login</h3>
+                            <h3 class="text-center text-primary">Login</h3>
                             {{form.hidden_tag()}}
                             <div class="form-group">
-                                <label for="username" class="text-dark">Username:</label><br>
+                                <label for="username" class="text-primary">Username:</label><br>
                                 <!-- <input type="text" name="username" id="username" class="form-control"> -->
                                 {{form.username}}
                             </div>
                             <div class="form-group">
-                                <label for="password" class="text-dark">Password:</label><br>
+                                <label for="password" class="text-primary">Password:</label><br>
                                 <!-- <input type="text" name="password" id="password" class="form-control"> -->
                                 {{form.password}}
                             </div>
                             <div class="form-group">
-
                                 <!-- <input type="submit" name="submit" class="btn btn-dark btn-md" value="submit"> -->
                                 {{form.submit}}
                             </div>
@@ -49,6 +82,16 @@
         </div>
     </div>
 
+    <footer class="page-footer font-small blue pt-5">
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3 bg-dark text-light p-2" style="background-image: url(https://images.pexels.com/photos/5980/food-sunset-love-field.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);background-size: cover; height: 100px; background-position: center; position:center;">
+            <h5> © 2021 Copyright: Precision Agriculture Using Machine Learning & IOT
+                <div class="text-center text-white text-uppercase font-weight-bold">Go Green....</div>
+            </h5>
+        </div>
+
+        <!-- Copyright -->
+    </footer>
 
 
     <!-- Optional JavaScript -->
