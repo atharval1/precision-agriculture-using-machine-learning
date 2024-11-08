@@ -39,4 +39,8 @@ Farming is one of the major sectors that influences a country’s economic growt
 
 - Disease Detection System ==> Upload an image of leaf of your plant. The algorithm will tell the crop type and whether it is diseased or healthy. If it is diseased, it will tell you the cause of the disease and suggest you how to prevent/cure the disease accordingly. Note that, for now it only supports few crops.
 
+##How to Run project
+- please check my youtube link https://youtu.be/kU0nf-rzusE
+- https://www.youtube.com/watch?v=eJ-KytG2H5w&t=36s
+
 
